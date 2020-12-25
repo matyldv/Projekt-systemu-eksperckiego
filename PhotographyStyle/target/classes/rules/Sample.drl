@@ -1,0 +1,559 @@
+package com.sample
+ 
+import javax.swing.JFrame;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+declare Pytanie
+	pytanie : String
+	opcje : String[]
+end
+
+declare Odpowiedz
+	pytanie : String
+	odpowiedz : String
+end
+
+rule "Init"
+    when
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Are you a people person?", opcje));
+    insert(new Odpowiedz("Are you a people person?", odpowiedz));    
+end
+
+rule "Are you a people person? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Are you a people person?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Do you want to make money at this?", opcje));
+    insert(new Odpowiedz("Do you want to make money at this?", odpowiedz));    
+end
+
+rule "Do you want to make money at this? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Do you want to make money at this?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Ever Fallen In Love?", opcje));
+    insert(new Odpowiedz("Ever Fallen In Love?", odpowiedz));    
+end
+
+rule "Ever Fallen In Love? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Ever Fallen In Love?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Prudish?", opcje));
+    insert(new Odpowiedz("Prudish?", odpowiedz));    
+end
+
+rule "Prudish? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Prudish?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("WEDDINGS");  
+    System.exit(0); 
+end
+
+rule "Prudish? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Prudish?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("BFA?", opcje));
+    insert(new Odpowiedz("BFA?", odpowiedz));    
+end
+
+rule "BFA? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "BFA?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("EROTICA");  
+    System.exit(0);   
+end
+
+rule "BFA? - No"
+    when 
+    	Odpowiedz(getPytanie() == "BFA?", getOdpowiedz() == "No")
+    then
+    zwrocWynik("PORN");  
+    System.exit(0);     
+end
+
+rule "Ever Fallen In Love? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Ever Fallen In Love?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Bleeding Heart Activist?", opcje));
+    insert(new Odpowiedz("Bleeding Heart Activist?", odpowiedz));    
+end
+
+rule "Bleeding Heart Activist? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Bleeding Heart Activist?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Adrenaline junkie?", opcje));
+    insert(new Odpowiedz("Adrenaline junkie?", odpowiedz));    
+end
+
+rule "Adrenaline junkie? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Adrenaline junkie?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("WAR PHOTOGRAPHY");  
+    System.exit(0);    
+end
+
+rule "Adrenaline junkie? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Adrenaline junkie?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Alt-process fetish?", opcje));
+    insert(new Odpowiedz("Alt-process fetish?", odpowiedz));    
+end
+
+rule "Alt-process fetish? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Alt-process fetish?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("B&W / SEPIA POVERTY PORN");  
+    System.exit(0);    
+end
+
+rule "Alt-process fetish? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Alt-process fetish?", getOdpowiedz() == "No")
+    then
+    zwrocWynik("SOCIAL DOCUMENTARY");  
+    System.exit(0); 
+end
+
+rule "Bleeding Heart Activist? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Bleeding Heart Activist?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Do you have quick reflexes?", opcje));
+    insert(new Odpowiedz("Do you have quick reflexes?", odpowiedz));    
+end
+
+rule "Do you have quick reflexes? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Do you have quick reflexes?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("SPORTS PHOTOGRAPHY");  
+    System.exit(0);  
+end
+
+rule "Do you have quick reflexes? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Do you have quick reflexes?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"I.F. Stone", "Rolling Stone", "Stone Phillips", "Bloodstone"};
+    String odpowiedz = zadajPytanie(new Pytanie("What's your Birth Stone?", opcje));
+    insert(new Odpowiedz("What's your Birth Stone?", odpowiedz));    
+end
+
+rule "What's your Birth Stone? - I.F. Stone"
+    when 
+    	Odpowiedz(getPytanie() == "What's your Birth Stone?", getOdpowiedz() == "I.F. Stone")
+    then
+    zwrocWynik("PHOTOJOURNALISM");  
+    System.exit(0);     
+end
+
+rule "What's your Birth Stone? - Rolling Stone"
+    when 
+    	Odpowiedz(getPytanie() == "What's your Birth Stone?", getOdpowiedz() == "Rolling Stone")
+    then
+    zwrocWynik("MUSIC/CONCERT PHOTOGRAPHY");  
+    System.exit(0);     
+end
+
+rule "What's your Birth Stone? - Stone Phillips"
+    when 
+    	Odpowiedz(getPytanie() == "What's your Birth Stone?", getOdpowiedz() == "Stone Phillips")
+    then
+    zwrocWynik("STOCK PHOTOGRAPHY");  
+    System.exit(0);     
+end
+
+rule "What's your Birth Stone? - Bloodstone"
+    when 
+    	Odpowiedz(getPytanie() == "What's your Birth Stone?", getOdpowiedz() == "Bloodstone")
+    then
+    zwrocWynik("COMMERCIAL/ADVERTISING");  
+    System.exit(0);     
+end
+
+rule "Do you want to make money at this? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Do you want to make money at this?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Are you  a voyeur?", opcje));
+    insert(new Odpowiedz("Are you  a voyeur?", odpowiedz));    
+end
+
+rule "Are you  a voyeur? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Are you  a voyeur?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Agoraphobe?", opcje));
+    insert(new Odpowiedz("Agoraphobe?", odpowiedz));    
+end
+
+rule "Agoraphobe? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Agoraphobe?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("GSV STREET PHOTOGRAPHY");  
+    System.exit(0);   
+end
+
+rule "Agoraphobe? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Agoraphobe?", getOdpowiedz() == "No")
+    then
+    zwrocWynik("STREET PHOTOGRAPHY");  
+    System.exit(0);      
+end
+
+rule "Are you  a voyeur? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Are you  a voyeur?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Are you a control freak?", opcje));
+    insert(new Odpowiedz("Are you a control freak?", odpowiedz));    
+end
+
+rule "Are you a control freak? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Are you a control freak?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("FINE ART PORTRAITS");  
+    System.exit(0);  
+end
+
+rule "Are you a control freak? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Are you a control freak?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Do you belive the journey is the destination?", opcje));
+    insert(new Odpowiedz("Do you belive the journey is the destination?", odpowiedz));    
+end
+
+rule "Do you belive the journey is the destination? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Do you belive the journey is the destination?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("TINTYPE PORTRAITS");  
+    System.exit(0);  
+end
+
+rule "Do you belive the journey is the destination? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Do you belive the journey is the destination?", getOdpowiedz() == "No")
+    then
+    zwrocWynik("ENVIRONMENTAL PORTRAITS");  
+    System.exit(0);  
+end
+
+rule "Are you a people person? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Are you a people person?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Do you own a photo vest, fedora, or light meter?", opcje));
+    insert(new Odpowiedz("Do you own a photo vest, fedora, or light meter?", odpowiedz));    
+end
+
+rule "Do you own a photo vest, fedora, or light meter? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Do you own a photo vest, fedora, or light meter?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"T.O.P.", "Lenscratch", "Conscientious"};
+    String odpowiedz = zadajPytanie(new Pytanie("Favorite Blog?", opcje));
+    insert(new Odpowiedz("Favorite Blog?", odpowiedz));    
+end
+
+rule "Favorite Blog? - T.O.P"
+    when 
+    	Odpowiedz(getPytanie() == "Favorite Blog?", getOdpowiedz() == "T.O.P.")
+    then
+    String[] opcje = new String[]{"Ansel", "Robert"};
+    String odpowiedz = zadajPytanie(new Pytanie("Favorite Adams?", opcje));
+    insert(new Odpowiedz("Favorite Adams?", odpowiedz));    
+end
+
+rule "Favorite Adams? - Ansel"
+    when 
+    	Odpowiedz(getPytanie() == "Favorite Adams?", getOdpowiedz() == "Ansel")
+    then
+    zwrocWynik("f/64 REDUX");  
+    System.exit(0);  
+end
+
+rule "Favorite Adams? - Robert"
+    when 
+    	Odpowiedz(getPytanie() == "Favorite Adams?", getOdpowiedz() == "Robert")
+    then
+    zwrocWynik("NEO NEW TOPOGRAPHICS");  
+    System.exit(0);  
+end
+
+rule "Favorite Blog? - Lenscratch"
+    when 
+    	Odpowiedz(getPytanie() == "Favorite Blog?", getOdpowiedz() == "Lenscratch")
+    then
+    zwrocWynik("RUIN PORN");  
+    System.exit(0);   
+end
+
+rule "Favorite Blog? - Conscientious"
+    when 
+    	Odpowiedz(getPytanie() == "Favorite Blog?", getOdpowiedz() == "Conscientious")
+    then
+    zwrocWynik("PHOTOS MADE WITH SOMETHING AT STAKE");  
+    System.exit(0);   
+end
+
+rule "Do you own a photo vest, fedora, or light meter? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Do you own a photo vest, fedora, or light meter?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Gear Aquisition Syndrome?", opcje));
+    insert(new Odpowiedz("Gear Aquisition Syndrome?", odpowiedz));    
+end
+
+rule "Gear Aquisition Syndrome? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Gear Aquisition Syndrome?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("TEST PRINTS DEMONSTRATING LATEST PURCHASE");  
+    System.exit(0);      
+end
+
+rule "Gear Aquisition Syndrome? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Gear Aquisition Syndrome?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("MFA?", opcje));
+    insert(new Odpowiedz("MFA?", odpowiedz));    
+end
+
+rule "MFA? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "MFA?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Unresolved Childhood Issues?", opcje));
+    insert(new Odpowiedz("Unresolved Childhood Issues?", odpowiedz));    
+end
+
+rule "Unresolved Childhood Issues? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Unresolved Childhood Issues?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("DOMESTIC SCENES");  
+    System.exit(0);    
+end
+
+rule "Unresolved Childhood Issues? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Unresolved Childhood Issues?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Were you a painter at one point?", opcje));
+    insert(new Odpowiedz("Were you a painter at one point?", odpowiedz));    
+end
+
+rule "Were you a painter at one point? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Were you a painter at one point?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("ABSTRACT EXPRESSIONISM");  
+    System.exit(0);  
+end
+
+rule "Were you a painter at one point? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Were you a painter at one point?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("OCD Tendencies?", opcje));
+    insert(new Odpowiedz("OCD Tendencies?", odpowiedz));    
+end
+
+rule "OCD Tendencies? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "OCD Tendencies?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("TYPOLOGIES");  
+    System.exit(0);   
+end
+
+rule "OCD Tendencies? - No"
+    when 
+    	Odpowiedz(getPytanie() == "OCD Tendencies?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Have you ever operated a camera?", opcje));
+    insert(new Odpowiedz("Have you ever operated a camera?", odpowiedz));    
+end
+
+rule "Have you ever operated a camera? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Have you ever operated a camera?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Innie", "Outie"};
+    String odpowiedz = zadajPytanie(new Pytanie("Bellybutton Morphology?", opcje));
+    insert(new Odpowiedz("Bellybutton Morphology?", odpowiedz));    
+end
+
+rule "Bellybutton Morphology? - Innie"
+    when 
+    	Odpowiedz(getPytanie() == "Bellybutton Morphology?", getOdpowiedz() == "Innie")
+    then
+    zwrocWynik("PHOTOS ABOUT PHOTOGRAPHY");  
+    System.exit(0);   
+end
+
+rule "Bellybutton Morphology? - Outie"
+    when 
+    	Odpowiedz(getPytanie() == "Bellybutton Morphology?", getOdpowiedz() == "Outie")
+    then
+    zwrocWynik("SOCIAL LANDSCAPES ON MEDIUM FORMAT COLOR FILM");  
+    System.exit(0);   
+end
+
+rule "Have you ever operated a camera? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Have you ever operated a camera?", getOdpowiedz() == "No")
+    then
+    zwrocWynik("APROPRIATED PHOTOGRAPHY");  
+    System.exit(0);   
+end
+
+rule "MFA? - No"
+    when 
+    	Odpowiedz(getPytanie() == "MFA?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Weakness for nostralgia?", opcje));
+    insert(new Odpowiedz("Weakness for nostralgia?", odpowiedz));    
+end
+
+rule "Weakness for nostralgia? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Weakness for nostralgia?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("CARDS AND CALENDARS");  
+    System.exit(0);   
+end
+
+rule "Weakness for nostralgia? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Weakness for nostralgia?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Do you trust institutions?", opcje));
+    insert(new Odpowiedz("Do you trust institutions?", odpowiedz));   
+end
+
+rule "Do you trust institutions? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Do you trust institutions?", getOdpowiedz() == "Yes")
+    then
+    zwrocWynik("ARCHITECTURAL PHOTOGRAPHY");  
+    System.exit(0);   
+end
+
+rule "Do you trust institutions? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Do you trust institutions?", getOdpowiedz() == "No")
+    then
+    String[] opcje = new String[]{"Yes", "No"};
+    String odpowiedz = zadajPytanie(new Pytanie("Graduer oriented?", opcje));
+    insert(new Odpowiedz("Graduer oriented?", odpowiedz));
+end
+
+rule "Graduer oriented? - Yes"
+    when 
+    	Odpowiedz(getPytanie() == "Graduer oriented?", getOdpowiedz() == "Yes")
+    then
+    String[] opcje = new String[]{"Batman", "Aquaman", "Wonder Woman"};
+    String odpowiedz = zadajPytanie(new Pytanie("Your favorite Superfriend?", opcje));
+    insert(new Odpowiedz("Your favorite Superfriend?", odpowiedz));    
+end
+
+rule "Your favorite Superfriend? - Batman"
+    when 
+    	Odpowiedz(getPytanie() == "Your favorite Superfriend?", getOdpowiedz() == "Batman")
+    then
+    zwrocWynik("NIGHT PHOTOGRAPHY");  
+    System.exit(0);    
+end
+
+rule "Your favorite Superfriend? - Aquaman"
+    when 
+    	Odpowiedz(getPytanie() == "Your favorite Superfriend?", getOdpowiedz() == "Aquaman")
+    then
+    zwrocWynik("UNDERWATER PHOTOGRAPHY");  
+    System.exit(0);    
+end
+
+rule "Your favorite Superfriend? - Wonder Woman"
+    when 
+    	Odpowiedz(getPytanie() == "Your favorite Superfriend?", getOdpowiedz() == "Wonder Woman")
+    then
+    zwrocWynik("AERIAL PHOTOGRAPHY");  
+    System.exit(0);    
+end
+
+rule "Graduer oriented? - No"
+    when 
+    	Odpowiedz(getPytanie() == "Graduer oriented?", getOdpowiedz() == "No")
+    then
+    zwrocWynik("SURVEILLANCE/FORCNSICS");  
+    System.exit(0); 
+end
+
+
+
+function  String zadajPytanie(Pytanie pytanie) {
+        	int okno = JOptionPane.showOptionDialog(null,
+        			pytanie.getPytanie(),
+        			"Question",
+        			JOptionPane.YES_NO_OPTION,
+        			JOptionPane.QUESTION_MESSAGE,
+        			null, 
+        			pytanie.getOpcje(), 
+        			pytanie.getOpcje()[0]); 
+        			
+        			if(okno==-1) {
+        				System.exit(-1);
+        				return "Error";
+        				
+        			}
+        			else 
+        				return pytanie.getOpcje()[okno];
+        	    }
+        	    
+function void zwrocWynik(String wynik) {
+        		JOptionPane.showMessageDialog(null,
+        			wynik,
+        			"Result",
+        			
+        			JOptionPane.INFORMATION_MESSAGE);
+        	    }
